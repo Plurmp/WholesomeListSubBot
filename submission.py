@@ -15,7 +15,8 @@ def post_doujin(title, author, tier, pages, tags, link):
     post_id = sub.submit(
         title=f"[{author}] {title}",
         url=link,
-        nsfw=True)
+        nsfw=True
+    )
 
     reddit.submission(id=post_id).reply(
         f"{link}\n\n**{title}**\n\nby {author}\n\n**Tier**: {tier}\n\n{pages} pages\n\n**Tags**\n\n{', '.join(tags)}\n\n*I am a bot beep boop whatever*"
