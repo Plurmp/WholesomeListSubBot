@@ -12,7 +12,8 @@ def check_new_entry(god_list, local_list):
                 tier=item["tier"],
                 pages=item["pages"],
                 tags=item["tags"],
-                link=item["link"]
+                link=item["link"],
+                warnings=item['warnings']
             )
             with open("local.json", "a") as a:
                 json.dump(
