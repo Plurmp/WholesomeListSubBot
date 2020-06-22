@@ -1,11 +1,12 @@
 import praw
+from os import environ as cred
 
 reddit = praw.Reddit(
-    client_id="CLIENT_ID",
-    client_secret="CLIENT_SECRET",
-    password="PASSWORD",
-    user_agent="USERAGENT",
-    username="USERNAME"
+    client_id=cred['CLIENT_ID'],
+    client_secret=cred["CLIENT_SECRET"],
+    password=cred["PASSWORD"],
+    user_agent=cred["USERAGENT"],
+    username=cred["USERNAME"]
 )
 
 
