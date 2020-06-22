@@ -5,7 +5,8 @@ reddit = praw.Reddit(
     client_secret="CLIENT_SECRET",
     password="PASSWORD",
     user_agent="USERAGENT",
-    username="USERNAME")
+    username="USERNAME"
+)
 
 
 def post_doujin(title, author, tier, pages, tags, link):
@@ -17,4 +18,5 @@ def post_doujin(title, author, tier, pages, tags, link):
         nsfw=True)
 
     reddit.submission(id=post_id).reply(
-        f"{link}\n\n**{title}**\n\nby {author}\n\n{pages} pages\n\n**Tags**\n\n{', '.join(tags)}\n\n*I am a bot beep boop whatever*")
+        f"{link}\n\n**{title}**\n\nby {author}\n\n**Tier**: {tier}\n\n{pages} pages\n\n**Tags**\n\n{', '.join(tags)}\n\n*I am a bot beep boop whatever*"
+    )
