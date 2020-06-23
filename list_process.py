@@ -5,7 +5,7 @@ def process(god_list):
     god_list_dict = {}
 
     with open('local.json', 'w') as w:
-        for item in god_list['table']:
+        for item in god_list:
             print(type(item))
             god_list_dict[item['link']] = {
                 'title': item['title'],
