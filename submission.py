@@ -10,7 +10,7 @@ reddit = praw.Reddit(
 )
 
 
-def post_doujin(title, author, tier, warnings, pages, tags, link):
+def post_doujin(title, author, tier, warning, pages, tags, link):
     sub = reddit.subreddit("wholesomelist")
 
     post_id = sub.submit(
@@ -20,5 +20,5 @@ def post_doujin(title, author, tier, warnings, pages, tags, link):
     )
 
     reddit.submission(id=post_id).reply(
-        f"{link}\n\n**{title}**\n\nby {author}\n\n**Tier**: {tier}\n\n{pages} pages\n\n**Tags**\n\n{', '.join(tags)}\n\nWarnings\n\n{', '.join(warnings)}\n\n*I am a bot beep boop whatever* "
+        f"{link}\n\n**{title}**\n\nby {author}\n\n**Tier**: {tier}\n\n{pages} pages\n\n**Tags**\n\n{', '.join(tags)}\n\nWarnings\n\n{', '.join(warning)}\n\n*I am a bot beep boop whatever* "
     )

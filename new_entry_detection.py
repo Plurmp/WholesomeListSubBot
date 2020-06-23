@@ -13,7 +13,7 @@ def check_new_entry(god_list, local_list):
                 pages=item["pages"],
                 tags=item["tags"],
                 link=item["link"],
-                warnings=item['warnings']
+                warning=item['warning']
             )
             with open("local.json", "a") as a:
                 json.dump(
