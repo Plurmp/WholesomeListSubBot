@@ -14,7 +14,7 @@ def post_doujin(title, author, tier, warning, pages, tags, link):
     sub = reddit.subreddit("wholesomelist")
 
     post_id = sub.submit(
-        title=f"[{author}] {title}",
+        title=f"({tier}) [{author}] {title}",
         url=link,
         nsfw=True
     )
