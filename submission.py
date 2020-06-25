@@ -20,5 +20,14 @@ def post_doujin(title, author, tier, warning, pages, tags, link):
     )
 
     reddit.submission(id=post_id).reply(
-        f"{link}\n\n**{title}**\n\nby {author}\n\n**Tier**: {tier}\n\n{pages} pages\n\n**Tags**\n\n{', '.join(tags)}\n\nWarning\n\n{warning}\n\n*I am a bot beep boop whatever* "
+        'Source:\n'
+        f'> <{link}>\n\n'
+        f'**{title}**  \n'
+        f'by {author}\n\n'
+        f'{"" if pages == -1 else pages + " pages\n\n"}'
+        f'Tier: **{tier}**\n\n'
+        f'{"" if warning == "None" else "**Warning:**" + warning + "\n\n"}'
+        f'**Tags:**  \n'
+        f'{", ".join(tags)}\n\n'
+        '*I am a bot beep boop whatever*'
     )
