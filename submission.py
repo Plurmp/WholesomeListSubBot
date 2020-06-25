@@ -19,14 +19,16 @@ def post_doujin(title, author, tier, warning, pages, tags, link):
         nsfw=True
     )
 
+    nl = '\n'
+
     reddit.submission(id=post_id).reply(
-        'Source:\n'
+        'Source: \n'
         f'> <{link}>\n\n'
         f'**{title}**  \n'
         f'by {author}\n\n'
-        f'{"" if pages == -1 else pages + " pages\n\n"}'
+        f'{"" if pages == -1 else pages + " pages" + nl + nl}'
         f'Tier: **{tier}**\n\n'
-        f'{"" if warning == "None" else "**Warning:**" + warning + "\n\n"}'
+        f'{"" if warning == "None" else "**Warning:**" + warning + nl + nl}'
         f'**Tags:**  \n'
         f'{", ".join(tags)}\n\n'
         '*I am a bot beep boop whatever*'
