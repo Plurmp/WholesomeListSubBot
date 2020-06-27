@@ -1,6 +1,3 @@
-import json
-
-
 def process(god_list):
     god_list_dict = {}
 
