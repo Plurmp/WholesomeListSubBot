@@ -13,10 +13,25 @@ reddit = praw.Reddit(
 def post_doujin(title, author, tier, warning, pages, tags, link):
     sub = reddit.subreddit("wholesomelist")
 
+    flair = ''
+    if tier == 'S':
+        flair = 'f088234a-b81a-11ea-9e71-0e1dcb1937ef'
+    elif tier == 'A':
+        flair = 'fb98aaac-b81a-11ea-a36c-0e34d3f45b33'
+    elif tier == 'B':
+        flair = '01f3c67a-b81b-11ea-b485-0e35d87bc449'
+    elif tier == 'C':
+        flair = '07f2eb96-b81b-11ea-b645-0efb855e960b'
+    elif tier == 'D':
+        flair = '1beb39a0-b81b-11ea-8417-0e9c3b8ed27b'
+    else:
+        flair = None
+
     post_id = sub.submit(
-        title=f"({tier}) [{author}] {title}",
+        title=f"[{author}] {title}",
         url=link,
-        nsfw=True
+        nsfw=True,
+        flair_id=flair
     )
 
     nl = '\n'
