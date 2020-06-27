@@ -1,11 +1,9 @@
-import json
-
 import submission
 
 
 def check_new_entry(god_list, local_list):
     for item in god_list:
-        if item['link'] not in local_list.keys():
+        if item['link'] not in local_list['link']:
             submission.post_doujin(
                 title=item["title"],
                 author=item["author"],
@@ -15,16 +13,5 @@ def check_new_entry(god_list, local_list):
                 link=item["link"],
                 warning=item['warning']
             )
-            with open("local.json", "a") as a:
-                json.dump(
-                    {item['link']: {
-                        'title': item['title'],
-                        'author': item['author'],
-                        'warning': item['warning'],
-                        'parody': item['parody'],
-                        'tier': item['tier'],
-                        'pages': item['pages'],
-                        'tags': item['tags'],
-                    }},
-                    fp=a
-                )
+
+            local_list.append(item)
