@@ -1,7 +1,7 @@
 import submission
 
 
-def check_new_entry(god_list, local_list):
+def check_new_entry(god_list: list, local_list: list):
     for item in god_list:
         if item not in local_list:
             submission.post_doujin(
