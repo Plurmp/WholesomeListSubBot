@@ -2,6 +2,7 @@ import submission
 
 
 def check_new_entry(god_list: list, local_list: list):
+    new_entry = False
     for item in god_list:
         if item not in local_list:
             new_entry = True
