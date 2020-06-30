@@ -1,5 +1,7 @@
 import praw
+import twitter
 from os import environ as cred
+
 
 reddit = praw.Reddit(
     client_id=cred['CLIENT_ID'],
@@ -9,11 +11,17 @@ reddit = praw.Reddit(
     username=cred["USERNAME"]
 )
 
+twit = twitter.Api(
+    consumer_key=cred['CONSUMER_KEY'],
+    consumer_secret=cred['CONSUMER_SECRET'],
+    access_token_key=cred['ACCESS_TOKEN'],
+    access_token_secret=cred['ACCESS_TOKEN_SECRET']
+)
 
-def post_doujin(title, author, tier, warning, pages, tags, link):
+
+def reddit_post(title, author, tier, warning, pages, tags, link):
     sub = reddit.subreddit("wholesomelist")
 
-    flair = ''
     if tier == 'S':
         flair = 'f088234a-b81a-11ea-9e71-0e1dcb1937ef'
     elif tier == 'A':
@@ -33,7 +41,7 @@ def post_doujin(title, author, tier, warning, pages, tags, link):
         nsfw=True,
         flair_id=flair
     )
-    print(f'New item "{title}" posted')
+    print(f'New item "{title}" posted to r/WholesomeList')
 
     nl = '\n'
 
@@ -49,4 +57,15 @@ def post_doujin(title, author, tier, warning, pages, tags, link):
         f'{", ".join(tags)}\n\n'
         '*I am a bot beep boop whatever*'
     )
-    print('Reply posted')
+    print('Replied to reddit post')
+
+
+def twitter_post(title, author, tier, link):
+    twit.PostUpdate(
+        'New Entry:\n'
+        f'{title}\n'
+        f'by {author}\n'
+        f'Tier: {tier}\n'
+        f'{link}'
+    )
+    print(f'New item "{title}" posted to @WholesomeOf')

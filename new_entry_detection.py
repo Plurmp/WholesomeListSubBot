@@ -8,14 +8,21 @@ def check_new_entry(god_list: list, local_list: list):
             new_entry = True
             print(f'New entry detected: {item}')
 
-            submission.post_doujin(
-                title=item["title"],
-                author=item["author"],
-                tier=item["tier"],
-                pages=item["pages"],
-                tags=item["tags"],
-                link=item["link"],
+            submission.reddit_post(
+                title=item['title'],
+                author=item['author'],
+                tier=item['tier'],
+                pages=item['pages'],
+                tags=item['tags'],
+                link=item['link'],
                 warning=item['warning']
+            )
+
+            submission.twitter_post(
+                title=item['title'],
+                author=item['author'],
+                tier=item['tier'],
+                link=item['link']
             )
 
             local_list.append(item)
