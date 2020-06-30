@@ -33,6 +33,7 @@ def post_doujin(title, author, tier, warning, pages, tags, link):
         nsfw=True,
         flair_id=flair
     )
+    print(f'New item "{title}" posted')
 
     nl = '\n'
 
@@ -48,3 +49,4 @@ def post_doujin(title, author, tier, warning, pages, tags, link):
         f'{", ".join(tags)}\n\n'
         '*I am a bot beep boop whatever*'
     )
+    print('Reply posted')

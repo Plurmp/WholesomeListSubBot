@@ -4,6 +4,8 @@ import submission
 def check_new_entry(god_list: list, local_list: list):
     for item in god_list:
         if item not in local_list:
+            print(f'New entry detected: {item}')
+
             submission.post_doujin(
                 title=item["title"],
                 author=item["author"],
@@ -15,3 +17,4 @@ def check_new_entry(god_list: list, local_list: list):
             )
 
             local_list.append(item)
+            print(f'Newest local list item is now {local_list[-1]}')
