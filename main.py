@@ -10,6 +10,7 @@ def main():
     r = requests.get(api)
     local_list: list = r.json()['table']
     while True:
+        r = requests.get(api)
         god_list: list = r.json()['table']
         new_entry_detection.check_new_entry(god_list, local_list)
         time.sleep(3600)
