@@ -19,7 +19,7 @@ twit = twitter.Api(
 )
 
 
-def reddit_post(title, author, tier, warning, pages, tags, link):
+def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
     sub = reddit.subreddit("wholesomelist")
 
     if tier == 'S':
@@ -36,7 +36,7 @@ def reddit_post(title, author, tier, warning, pages, tags, link):
         flair = None
 
     post_id = sub.submit(
-        title=f"[{author}] {title}",
+        title=f'{"Featured: [" + author + "] " + title if feature else "[" + author + "] " + title}',
         url=link,
         nsfw=True,
         flair_id=flair
@@ -60,9 +60,10 @@ def reddit_post(title, author, tier, warning, pages, tags, link):
     print('Replied to reddit post')
 
 
-def twitter_post(title, author, tier, link):
+def twitter_post(title, author, tier, link, feature: bool):
+    nl = '\n'
     twit.PostUpdate(
-        'New Entry:\n'
+        f'{"Featured:" + nl if feature else "New Entry:" + nl}'
         f'{title}\n'
         f'by {author}\n'
         f'Tier: {tier}\n'

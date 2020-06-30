@@ -1,10 +1,10 @@
 import submission
 
 
-def check_new_entry(god_list: list, local_list: list):
+def check_new_entry(god: list, local: list, feature: bool):
     new_entry = False
-    for item in god_list:
-        if item not in local_list:
+    for item in god:
+        if item not in local:
             new_entry = True
             print(f'New entry detected: {item}')
 
@@ -15,17 +15,22 @@ def check_new_entry(god_list: list, local_list: list):
                 pages=item['pages'],
                 tags=item['tags'],
                 link=item['link'],
-                warning=item['warning']
+                warning=item['warning'],
+                feature=feature
             )
 
             submission.twitter_post(
                 title=item['title'],
                 author=item['author'],
                 tier=item['tier'],
-                link=item['link']
+                link=item['link'],
+                feature=feature
             )
 
-            local_list.append(item)
-            print(f'Newest local list item is now {local_list[-1]}')
+            local.append(item)
+            print(f'Newest local list item is now {local[-1]}')
     if not new_entry:
-        print('No new entry detected')
+        if feature:
+            print('No new feature detected')
+        else:
+            print('No new entry detected')
