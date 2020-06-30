@@ -18,3 +18,5 @@ def check_new_entry(god_list: list, local_list: list):
 
             local_list.append(item)
             print(f'Newest local list item is now {local_list[-1]}')
+        else:
+            print('No new entry detected')
