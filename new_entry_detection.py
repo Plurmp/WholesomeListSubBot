@@ -6,7 +6,10 @@ def check_new_entry(god: list, local: list, feature: bool):
     for item in god:
         if item not in local:
             new_entry = True
-            print(f'New entry detected: {item}')
+            if feature:
+                print(f'New feature detected: {item}')
+            else:
+                print(f'New entry detected: {item}')
 
             submission.reddit_post(
                 title=item['title'],
@@ -28,7 +31,10 @@ def check_new_entry(god: list, local: list, feature: bool):
             )
 
             local.append(item)
-            print(f'Newest local list item is now {local[-1]}')
+            if feature:
+                print(f'Newest local feature item is now {local[-1]}')
+            else:
+                print(f'Newest local list item is now {local[-1]}')
     if not new_entry:
         if feature:
             print('No new feature detected')
