@@ -9,7 +9,8 @@ api_features = 'https://wholesomelist.com/api/features'
 
 def remove_id(list1):
     for item in list1:
-        del item['id']
+        if 'id' in item.keys():
+            del item['id']
 
 
 def main():
