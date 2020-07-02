@@ -11,16 +11,28 @@ def check_new_entry(god: list, local: list, feature: bool):
             else:
                 print(f'New entry detected: {item}')
 
-            submission.reddit_post(
-                title=item['title'],
-                author=item['author'],
-                tier=item['tier'],
-                pages=item['pages'],
-                tags=item['tags'],
-                link=item['link'],
-                warning=item['warning'],
-                feature=feature
-            )
+            if feature:
+                submission.reddit_post(
+                    title=item['title'],
+                    author=item['author'],
+                    tier=item['tier'],
+                    tags=item['tags'],
+                    link=item['link'],
+                    warning=item['warning'],
+                    feature=feature,
+                    pages=None
+                )
+            else:
+                submission.reddit_post(
+                    title=item['title'],
+                    author=item['author'],
+                    tier=item['tier'],
+                    pages=item['pages'],
+                    tags=item['tags'],
+                    link=item['link'],
+                    warning=item['warning'],
+                    feature=feature
+                )
 
             submission.twitter_post(
                 title=item['title'],
