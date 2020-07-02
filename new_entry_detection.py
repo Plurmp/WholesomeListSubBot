@@ -16,11 +16,11 @@ def check_new_entry(god: list, local: list, feature: bool):
                     title=item['title'],
                     author=item['author'],
                     tier=item['tier'],
-                    tags=item['tags'],
                     link=item['link'],
-                    warning=item['warning'],
-                    feature=feature,
-                    pages=None
+                    tags=None,
+                    warning=None,
+                    pages=None,
+                    feature=feature
                 )
             else:
                 submission.reddit_post(
