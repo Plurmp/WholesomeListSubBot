@@ -2,7 +2,6 @@ import praw
 import twitter
 from os import environ as cred
 
-
 reddit = praw.Reddit(
     client_id=cred['CLIENT_ID'],
     client_secret=cred["CLIENT_SECRET"],
