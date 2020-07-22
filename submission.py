@@ -21,17 +21,25 @@ twit = twitter.Api(
 def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
     sub = reddit.subreddit("wholesomelist")
 
-    if tier == 'S':
-        flair = 'f088234a-b81a-11ea-9e71-0e1dcb1937ef'
-    elif tier == 'A':
-        flair = 'fb98aaac-b81a-11ea-a36c-0e34d3f45b33'
-    elif tier == 'B':
-        flair = '01f3c67a-b81b-11ea-b485-0e35d87bc449'
-    elif tier == 'C':
-        flair = '07f2eb96-b81b-11ea-b645-0efb855e960b'
-    elif tier == 'D':
-        flair = '1beb39a0-b81b-11ea-8417-0e9c3b8ed27b'
-    else:
+    tier_flairs = {
+        'S': 'f088234a-b81a-11ea-9e71-0e1dcb1937ef',
+        'S-': 'c38f2810-c84c-11ea-84c5-0e35d001c675',
+        'A+': 'd802ab6e-c84c-11ea-b3cb-0e3932130613',
+        'A': 'fb98aaac-b81a-11ea-a36c-0e34d3f45b33',
+        'A-': '416ee70c-c84d-11ea-a6e1-0e6e3dd60dff',
+        'B+': '234469be-c84d-11ea-ac70-0e23c18679df',
+        'B': '01f3c67a-b81b-11ea-b485-0e35d87bc449',
+        'B-': '97f3cd5e-c89d-11ea-8179-0ef049ef4173',
+        'C+': '85b5a32e-c89d-11ea-b09c-0e51f7142395',
+        'C': '07f2eb96-b81b-11ea-b645-0efb855e960b',
+        'C-': '1bc1a0ca-c89e-11ea-bf7e-0e304de417f1',
+        'D+': '7f3bda80-cc59-11ea-9e13-0e80adcf2e59',
+        'D': '1beb39a0-b81b-11ea-8417-0e9c3b8ed27b',
+        'D-': '78a31fc2-cc58-11ea-ac97-0e0856a7f1e3',
+    }
+    try:
+        flair = tier_flairs[tier]
+    except KeyError:
         flair = None
 
     post_id = sub.submit(
