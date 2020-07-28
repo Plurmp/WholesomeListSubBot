@@ -9,6 +9,7 @@ reddit = praw.Reddit(
     user_agent=cred["USERAGENT"],
     username=cred["USERNAME"]
 )
+print('Logged in to reddit')
 
 twit = twitter.Api(
     consumer_key=cred['CONSUMER_KEY'],
@@ -16,6 +17,7 @@ twit = twitter.Api(
     access_token_key=cred['ACCESS_TOKEN'],
     access_token_secret=cred['ACCESS_TOKEN_SECRET']
 )
+print('Logged in to twitter')
 
 
 def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
