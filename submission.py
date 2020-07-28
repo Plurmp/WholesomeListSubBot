@@ -37,10 +37,13 @@ def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
         'D': '1beb39a0-b81b-11ea-8417-0e9c3b8ed27b',
         'D-': '78a31fc2-cc58-11ea-ac97-0e0856a7f1e3',
     }
-    try:
-        flair = tier_flairs[tier]
-    except KeyError:
-        flair = None
+    if feature:
+        flair = 'dc9b2656-d0f3-11ea-9110-0e298e4654a9'
+    else:
+        try:
+            flair = tier_flairs[tier]
+        except KeyError:
+            flair = None
 
     post_id = sub.submit(
         title=f'{"Featured: [" + author + "] " + title if feature else "[" + author + "] " + title}',
