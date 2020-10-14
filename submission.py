@@ -71,13 +71,19 @@ def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
     print('Replied to reddit post')
 
 
-def twitter_post(title, author, tier, link, feature: bool):
+def twitter_post(title, author, tier, warning, pages, tags, link, feature: bool):
     nl = '\n'
-    twit.PostUpdate(
+    post = twit.PostUpdate(
         f'{"Featured:" + nl if feature else "New Entry:" + nl}'
         f'{title}\n'
         f'by {author}\n'
         f'Tier: {tier}\n'
         f'{link}'
+    )
+    twit.PostUpdate(
+        f'{"" if (warning == "None" or warning is None) else "Warning: " + warning + nl}'
+        f'{"" if (tags is None) else "Tags: " + nl + ", ".join(tags) + nl}'
+        f'{"" if (pages == -1 or pages is None) else pages + " pages"}',
+        in_reply_to_status_id=post.id
     )
     print(f'New item "{title}" posted to @WholesomeOf')

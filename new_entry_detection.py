@@ -41,7 +41,10 @@ def check_new_entry(god: list, local: list, feature: bool):
                 title=item['title'],
                 author=item['author'],
                 tier=item['tier'],
+                pages=item['pages'],
+                tags=item['tags'],
                 link=item['link'],
+                warning=item['warning'],
                 feature=feature
             )
 
