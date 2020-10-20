@@ -82,7 +82,7 @@ def twitter_post(title, author, tier, warning, pages, tags, link, feature: bool)
     )
     twit.PostUpdate(
         f'{"" if (warning == "None" or warning is None) else "Warning: " + warning + nl}'
-        f'{"" if (tags is None) else "Tags: " + nl + ", ".join(tags) + nl}'
+        f'{"" if (tags is None) else "Tags: " + ", ".join(tags) + nl}'
         f'{"" if (pages == -1 or pages is None) else pages + " pages"}',
         in_reply_to_status_id=post.id
     )
