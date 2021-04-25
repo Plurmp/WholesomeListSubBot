@@ -15,20 +15,20 @@ def remove_id(list1):
 
 def main():
     r_list = requests.get(api_list)
-    r_features = requests.get(api_features)
+    # r_features = requests.get(api_features)
     local_list: list = r_list.json()['table']
     remove_id(local_list)
-    local_features: list = r_features.json()['table']
-    remove_id(local_features)
+    # local_features: list = r_features.json()['table']
+    # remove_id(local_features)
     while True:
         r_list = requests.get(api_list)
-        r_features = requests.get(api_features)
+        # r_features = requests.get(api_features)
         god_list: list = r_list.json()['table']
         remove_id(god_list)
-        god_features: list = r_features.json()['table']
-        remove_id(god_features)
+        # god_features: list = r_features.json()['table']
+        # remove_id(god_features)
         new_entry_detection.check_new_entry(god_list, local_list, feature=False)
-        new_entry_detection.check_new_entry(god_features, local_features, feature=True)
+        # new_entry_detection.check_new_entry(god_features, local_features, feature=True)
         time.sleep(3600)
 
 
