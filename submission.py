@@ -64,7 +64,7 @@ def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
         f'by {author}\n\n'
         f'{"" if (pages == -1 or pages is None) else pages + " pages" + nl + nl}'
         f'Tier: **{tier}**\n\n'
-        f'{"" if (warning == "None" or warning is None) else "**Note:**" + warning + nl + nl}'
+        f'{"" if (warning == "None" or warning is None) else "**Note:** " + warning + nl + nl}'
         f'{"" if (tags is None) else "**Tags:** " + nl + ", ".join(tags) + nl + nl}'
         '*I am a bot beep boop whatever*'
     )
