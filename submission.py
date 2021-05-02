@@ -65,7 +65,7 @@ def reddit_post(title=None, author=None, tier=None, warning=None, pages=None, ta
         f'{"" if (pages == -1 or pages is None) else pages + " pages" + nl + nl}'
         f'Tier: **{tier}**\n\n'
         f'{"" if (warning == "None" or warning is None) else "**Note:** " + warning + nl + nl}'
-        f'{"" if (parody is None) else "**Parody: **" + parody + nl + nl}'
+        f'{"" if (parody is None or parody == "None") else "**Parody: **" + parody + nl + nl}'
         f'{"" if (tags is None) else "**Tags:** " + nl + ", ".join(tags) + nl + nl}'
         '*I am a bot beep boop whatever*'
     )
@@ -84,7 +84,7 @@ def twitter_post(title=None, author=None, tier=None, warning=None, pages=None, t
     )
     twit.PostUpdate(
         f'{"" if (warning == "None" or warning is None) else "Note: " + warning + nl}'
-        f'{"" if (parody is None) else "Parody: " + parody + nl}'
+        f'{"" if (parody is None or parody == "None") else "Parody: " + parody + nl}'
         f'{"" if (tags is None) else "Tags: " + ", ".join(tags) + nl}'
         f'{"" if (pages == -1 or pages is None) else pages + " pages"}',
         in_reply_to_status_id=post.id
