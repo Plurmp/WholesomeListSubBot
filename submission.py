@@ -20,7 +20,7 @@ twit = twitter.Api(
 print('Logged in to twitter')
 
 
-def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
+def reddit_post(title=None, author=None, tier=None, warning=None, pages=None, tags=None, link=None, parody=None, feature=False):
     sub = reddit.subreddit("wholesomelist")
 
     tier_flairs = {
@@ -65,13 +65,14 @@ def reddit_post(title, author, tier, warning, pages, tags, link, feature: bool):
         f'{"" if (pages == -1 or pages is None) else pages + " pages" + nl + nl}'
         f'Tier: **{tier}**\n\n'
         f'{"" if (warning == "None" or warning is None) else "**Note:** " + warning + nl + nl}'
+        f'{"" if (parody is None) else "**Parody: **" + parody + nl + nl}'
         f'{"" if (tags is None) else "**Tags:** " + nl + ", ".join(tags) + nl + nl}'
         '*I am a bot beep boop whatever*'
     )
     print('Replied to reddit post')
 
 
-def twitter_post(title, author, tier, warning, pages, tags, link, feature: bool):
+def twitter_post(title=None, author=None, tier=None, warning=None, pages=None, tags=None, link=None, parody=None, feature=False):
     nl = '\n'
     post = twit.PostUpdate(
         f'{"Featured:" + nl if feature else "New Entry:" + nl}'
@@ -82,6 +83,7 @@ def twitter_post(title, author, tier, warning, pages, tags, link, feature: bool)
     )
     twit.PostUpdate(
         f'{"" if (warning == "None" or warning is None) else "Note: " + warning + nl}'
+        f'{"" if (parody is None) else "Parody: " + parody + nl}'
         f'{"" if (tags is None) else "Tags: " + ", ".join(tags) + nl}'
         f'{"" if (pages == -1 or pages is None) else pages + " pages"}',
         in_reply_to_status_id=post.id
