@@ -20,9 +20,7 @@ def check_new_entry(god: list, local: list, feature: bool):
                     author=item['author'],
                     tier=item['tier'],
                     link=item['link'],
-                    tags=None,
-                    warning=None,
-                    pages=None,
+                    parody=item['parody'],
                     feature=feature
                 )
             else:
@@ -45,6 +43,8 @@ def check_new_entry(god: list, local: list, feature: bool):
                 tags=item['tags'],
                 link=item['link'],
                 warning=item['warning'],
+                parody=item['parody'],
+                image=item['image'],
                 feature=feature
             )
 

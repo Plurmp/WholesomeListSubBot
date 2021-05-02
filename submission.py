@@ -72,14 +72,15 @@ def reddit_post(title=None, author=None, tier=None, warning=None, pages=None, ta
     print('Replied to reddit post')
 
 
-def twitter_post(title=None, author=None, tier=None, warning=None, pages=None, tags=None, link=None, parody=None, feature=False):
+def twitter_post(title=None, author=None, tier=None, warning=None, pages=None, tags=None, link=None, parody=None, image=None, feature=False):
     nl = '\n'
     post = twit.PostUpdate(
         f'{"Featured:" + nl if feature else "New Entry:" + nl}'
         f'{title}\n'
         f'by {author}\n'
         f'Tier: {tier}\n'
-        f'{link}'
+        f'{link}',
+        media=image
     )
     twit.PostUpdate(
         f'{"" if (warning == "None" or warning is None) else "Note: " + warning + nl}'
