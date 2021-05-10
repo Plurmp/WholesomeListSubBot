@@ -31,7 +31,7 @@ def check_new_entry(god: list, local: list, feature: bool):
 					pages=item['pages'],
 					tags=item['tags'],
 					link=item['link'],
-					warning=item['warning'],
+					note=item['note'],
 					parody=item['parody'],
 					feature=feature
 				)
@@ -43,7 +43,7 @@ def check_new_entry(god: list, local: list, feature: bool):
 				pages=item['pages'],
 				tags=item['tags'],
 				link=item['link'],
-				warning=item['warning'],
+				note=item['note'],
 				parody=item['parody'],
 				image=item['image'],
 				feature=feature

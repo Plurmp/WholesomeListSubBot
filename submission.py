@@ -19,8 +19,9 @@ twit = twitter.Api(
 )
 print('Logged in to twitter')
 
+nl = '\n'
 
-def reddit_post(title=None, author=None, tier=None, warning=None, pages=None, tags=None, link=None, parody=None, feature=False):
+def reddit_post(title=None, author=None, tier=None, note=None, pages=None, tags=None, link=None, parody=None, feature=False):
     sub = reddit.subreddit("wholesomelist")
 
     tier_flairs = {
@@ -55,8 +56,6 @@ def reddit_post(title=None, author=None, tier=None, warning=None, pages=None, ta
     )
     print(f'New item "{title}" posted to r/WholesomeList')
 
-    nl = '\n'
-
     reddit.submission(id=post_id).reply(
         'Source: \n'
         f'> <{link}>\n\n'
@@ -64,7 +63,7 @@ def reddit_post(title=None, author=None, tier=None, warning=None, pages=None, ta
         f'by {author}\n\n'
         f'{"" if (pages == -1 or pages is None) else pages + " pages" + nl + nl}'
         f'Tier: **{tier}**\n\n'
-        f'{"" if (warning == "None" or warning is None) else "**Note:** " + warning + nl + nl}'
+        f'{"" if (note == "None" or note is None) else "**Note:** " + note + nl + nl}'
         f'{"" if (parody is None or parody == "None") else "**Parody: **" + parody + nl + nl}'
         f'{"" if (tags is None) else "**Tags:** " + nl + ", ".join(tags) + nl + nl}'
         '*I am a bot beep boop whatever*'
@@ -72,8 +71,7 @@ def reddit_post(title=None, author=None, tier=None, warning=None, pages=None, ta
     print('Replied to reddit post')
 
 
-def twitter_post(title=None, author=None, tier=None, warning=None, pages=None, tags=None, link=None, parody=None, image=None, feature=False):
-    nl = '\n'
+def twitter_post(title=None, author=None, tier=None, note=None, pages=None, tags=None, link=None, parody=None, image=None, feature=False):
     post = twit.PostUpdate(
         f'{"Featured:" + nl if feature else "New Entry:" + nl}'
         f'{title}\n'
@@ -83,7 +81,7 @@ def twitter_post(title=None, author=None, tier=None, warning=None, pages=None, t
         media=image
     )
     twit.PostUpdate(
-        f'{"" if (warning == "None" or warning is None) else "Note: " + warning + nl}'
+        f'{"" if (note == "None" or note is None) else "Note: " + note + nl}'
         f'{"" if (parody is None or parody == "None") else "Parody: " + parody + nl}'
         f'{"" if (tags is None) else "Tags: " + ", ".join(tags) + nl}'
         f'{"" if (pages == -1 or pages is None) else pages + " pages"}',
