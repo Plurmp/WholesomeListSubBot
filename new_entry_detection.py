@@ -3,11 +3,11 @@ import submission
 
 def check_new_entry(god: list, local: list, feature: bool):
 	new_entry = False
-	local_links = []
+	local_uuids = []
 	for local_item in local:
-		local_links.append(local_item['link'])
+		local_uuids.append(local_item['uuid'])
 	for item in god:
-		if item['link'] not in local_links:
+		if item['uuid'] not in local_uuids:
 			new_entry = True
 			if feature:
 				print(f'New feature detected: {item}')
