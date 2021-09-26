@@ -21,7 +21,9 @@ print('Logged in to twitter')
 
 nl = '\n'
 
-def reddit_post(title=None, author=None, tier=None, note=None, pages=None, tags=None, link=None, parody=None, feature=False):
+
+def reddit_post(title=None, author=None, tier=None, note=None, pages=None, tags=None, link=None, parody=None,
+                uuid=None, feature=False):
     sub = reddit.subreddit("wholesomelist")
 
     tier_flairs = {
@@ -61,6 +63,7 @@ def reddit_post(title=None, author=None, tier=None, note=None, pages=None, tags=
         f'> <{link}>\n\n'
         f'**{title}**  \n'
         f'by {author}\n\n'
+        f'Wholesome List link: https://wholesomelist.com/list/{uuid}\n\n'
         f'{"" if (pages == -1 or pages is None) else pages + " pages" + nl + nl}'
         f'Tier: **{tier}**\n\n'
         f'{"" if (note == "None" or note is None) else "**Note:** " + note + nl + nl}'
@@ -71,7 +74,8 @@ def reddit_post(title=None, author=None, tier=None, note=None, pages=None, tags=
     print('Replied to reddit post')
 
 
-def twitter_post(title=None, author=None, tier=None, note=None, pages=None, tags=None, link=None, parody=None, image=None, feature=False):
+def twitter_post(title=None, author=None, tier=None, note=None, pages=None, tags=None, link=None, parody=None,
+                 uuid=None, image=None, feature=False):
     post = twit.PostUpdate(
         f'{"Featured:" + nl if feature else "New Entry:" + nl}'
         f'{title}\n'
@@ -81,6 +85,7 @@ def twitter_post(title=None, author=None, tier=None, note=None, pages=None, tags
         media=image
     )
     twit.PostUpdate(
+        f'{"" if (uuid is None) else "Wholesome List link: https://wholesomelist.com/list/" + uuid + nl}'
         f'{"" if (note == "None" or note is None) else "Note: " + note + nl}'
         f'{"" if (parody is None or parody == "None") else "Parody: " + parody + nl}'
         f'{"" if (tags is None) else "Tags: " + ", ".join(tags) + nl}'

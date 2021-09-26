@@ -33,6 +33,7 @@ def check_new_entry(god: list, local: list, feature: bool):
 					link=item['link'],
 					note=item['note'],
 					parody=item['parody'],
+					uuid=item['uuid'],
 					feature=feature
 				)
 
@@ -46,6 +47,7 @@ def check_new_entry(god: list, local: list, feature: bool):
 				note=item['note'],
 				parody=item['parody'],
 				image=item['image'],
+				uuid=item['uuid'],
 				feature=feature
 			)
 
